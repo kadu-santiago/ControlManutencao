@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Servico::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun manutencaoDao(): ServicoDao
-    abstract fun servicoDao()
+
+    // Deixamos apenas UM DAO, com o tipo de retorno correto:
+    abstract fun servicoDao(): ServicoDao
 
     companion object {
         @Volatile

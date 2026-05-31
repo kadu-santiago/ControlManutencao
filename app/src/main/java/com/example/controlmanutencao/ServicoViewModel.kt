@@ -6,22 +6,25 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import androidx.lifecycle.asLiveData
 
-
 class ServicoViewModel(private val repository: ServicoRepository) : ViewModel() {
 
-    val listaManutencoes: LiveData<List<Servico>> = repository.historico.asLiveData()
+    val listaServicos: LiveData<List<Servico>> = repository.historico.asLiveData()
     val custoTotal: LiveData<Double?> = repository.total.asLiveData()
 
-    fun adicionarManutencao(veiculo: String, servico: String, valor: Double, data: Long) {
+    fun adicionarServico(veiculo: String, desc: String, valor: Double, data: Long) {
         viewModelScope.launch {
-            val nova = Servico(tipoVeiculo = veiculo, descricao = servico, custo = valor, data = data)
+            val nova = Servico(tipoVeiculo = veiculo, descricao = desc, custo = valor, data = data)
             repository.salvar(nova)
         }
     }
 
-    fun removerManutencao(servico: Servico) {
+    fun removerServico(servico: Servico) {
         viewModelScope.launch {
             repository.excluir(servico)
         }
+    }
+
+    fun filtrarPorTipo(tipo: String): LiveData<List<Servico>> {
+        return repository.filtrar(tipo).asLiveData()
     }
 }
