@@ -1,0 +1,19 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tipo de Veículo" />
+    <RadioGroup android:id="@+id/rgTipoVeiculo" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <RadioButton android:id="@+id/rbCarro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carro" android:checked="true" />
+        <RadioButton android:id="@+id/rbMoto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Moto" />
+    </RadioGroup>
+
+    <EditText android:id="@+id/edtDescricao" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Descrição (ex: Troca de Óleo)" />
+    <EditText android:id="@+id/edtCusto" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Custo (R$)" android:inputType="numberDecimal" />
+    <EditText android:id="@+id/edtData" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Data" android:focusable="false" />
+
+    <Button android:id="@+id/btnSalvar" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Salvar Manutenção" />
+</LinearLayout>
